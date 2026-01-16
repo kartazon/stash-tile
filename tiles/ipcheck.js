@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-let url = "http://ip-api.com/json"
+let url = "http://ip-api.com/json";
 
 $httpClient.get(url, function(error, response, data) {
     if (error) {
@@ -9,7 +9,7 @@ $httpClient.get(url, function(error, response, data) {
 
     let jsonData = JSON.parse(data);
     let country = jsonData.country;
-    let emoji = getFlagEmoji(jsonData.countryCode); // Вызываем функцию получения флага
+    let emoji = getFlagEmoji(jsonData.countryCode);
     let city = jsonData.city;
     let isp = jsonData.isp;
     let ip = jsonData.query;
@@ -18,13 +18,11 @@ $httpClient.get(url, function(error, response, data) {
         title: "INFO",
         content: `${ip} | IP\n${isp} | ORG\n${emoji} ${country} - ${city} | REG`,
         icon: "globe.asia.australia.fill",
-        // "icon-color": "#0C9DFA"
         backgroundColor: '#0C9DFA'
     };
 
     $done(body);
 });
-
 
 function getFlagEmoji(countryCode) {
     if (!countryCode) return "🏳️";
