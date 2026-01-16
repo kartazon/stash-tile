@@ -1,5 +1,7 @@
 /* jshint esversion: 6 */
-$httpClient.get('http://ip-api.com/json', function(error, response, data) {
+let url = "http://ip-api.com/json"
+
+$httpClient.get(url, function(error, response, data) {
     if (error) {
         $done({title: "Ошибка", content: "Не удалось получить данные"});
         return;
