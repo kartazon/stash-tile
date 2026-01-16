@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 let url = "http://ip-api.com/json/?lang=en";
+const align = (text, width = 10) => text.padEnd(width, ' ');
 
 $httpClient.get(url, function(error, response, data) {
     if (error) {
@@ -17,8 +18,10 @@ $httpClient.get(url, function(error, response, data) {
 
     let body = {
         title: "IP info",
-        // title: rootName,
-        content: `${ip}  |   IP\n${isp}  |  ORG\n${emoji} ${country} - ${city}  |  REG\n${timezone}  |  TMZ`,
+        content: `${align("IP:")}${ip}\n` +
+                 `${align("ORG:")}${isp}\n` +
+                 `${align("REG:")}${emoji} ${country}\n` +
+                 `${align("TMZ:")}${timezone}`,
         icon: "globe.asia.australia.fill",
         backgroundColor: '#0C9DFA'
     };
