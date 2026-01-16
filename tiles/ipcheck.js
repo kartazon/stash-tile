@@ -7,12 +7,11 @@ $httpClient.get('http://ip-api.com/json', function(error, response, data) {
 
     let jsonData = JSON.parse(data);
     let country = jsonData.country;
+    let emoji = getFlagEmoji(jsonData.countryCode);
     let city = jsonData.city;
     let isp = jsonData.isp;
     let ip = jsonData.query;
-    let emoji = ""; // Добавьте переменную для эмодзи, если она нужна
-
-    // Используем обратные кавычки ` для формирования текста
+    
     let body = {
         content: `${ip} | IP\n${isp} | ORG\n${country} - ${city} | REG`,
         icon: "globe.asia.australia.fill",
