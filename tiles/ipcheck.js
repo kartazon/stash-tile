@@ -16,7 +16,7 @@ $httpClient.get(url, function(error, response, data) {
     let ip = jsonData.query;
 
     let body = {
-        title: "INFO",
+        title: "IP info",
         // title: rootName,
         content: `${ip}  |   IP\n${isp}  |  ORG\n${emoji} ${country} - ${city}  |  REG\n${timezone}  |  TMZ`,
         icon: "globe.asia.australia.fill",
