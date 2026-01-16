@@ -13,7 +13,7 @@ $httpClient.get('http://ip-api.com/json', function(error, response, data) {
     let ip = jsonData.query;
 
     let body = {
-        // Исправлено: добавлена $ перед {emoji}
+        title: "INFO",
         content: `${ip} | IP\n${isp} | ORG\n${emoji} ${country} - ${city} | REG`,
         icon: "globe.asia.australia.fill",
         // "icon-color": "#0C9DFA"
