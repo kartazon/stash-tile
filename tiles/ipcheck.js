@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-let url = "http://ip-api.com/json";
+let url = "http://ip-api.com/json/?lang=en";
 
 $httpClient.get(url, function(error, response, data) {
     if (error) {
@@ -11,12 +11,14 @@ $httpClient.get(url, function(error, response, data) {
     let country = jsonData.country;
     let emoji = getFlagEmoji(jsonData.countryCode);
     let city = jsonData.city;
+    let timezone = jsonData.timezone;
     let isp = jsonData.isp;
     let ip = jsonData.query;
 
     let body = {
-        title: "INFO",
-        content: `${ip} | IP\n${isp} | ORG\n${emoji} ${country} - ${city} | REG`,
+        // title: "INFO",
+        title: rootName,
+        content: `${ip} |   IP\n${isp} |  ORG\n${emoji} ${country} - ${city} |  REG\n${timezone} |  TMZ`,
         icon: "globe.asia.australia.fill",
         backgroundColor: '#0C9DFA'
     };
