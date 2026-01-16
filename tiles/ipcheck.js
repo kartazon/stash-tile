@@ -1,29 +1,23 @@
-let url = "http://ip-api.com/json"
+/* jshint esversion: 6 */
+$httpClient.get('http://ip-api.com/json', function(error, response, data) {
+    if (error) {
+        $done({title: "Ошибка", content: "Не удалось получить данные"});
+        return;
+    }
 
-$httpClient.get(url, function(error, response, data){
-    let jsonData = JSON.parse(data)
-    let country = jsonData.country
-    let emoji = getFlagEmoji(jsonData.countryCode)
-    let city = jsonData.city
-    let isp = jsonData.isp
-    let ip = jsonData.query
-  body = {
-    title: "节点信息",
-    content: `${ip} | IP信息\n${isp} | 运营商\n${emoji}${country} - ${city} | 所在地`,
-    icon: "globe.asia.australia.fill",
-    backgroundColor: '#0C9DFA'
-  }
-  $done(body);
+    let jsonData = JSON.parse(data);
+    let country = jsonData.country;
+    let city = jsonData.city;
+    let isp = jsonData.isp;
+    let ip = jsonData.query;
+    let emoji = ""; // Добавьте переменную для эмодзи, если она нужна
+
+    // Используем обратные кавычки ` для формирования текста
+    let body = {
+        content: `${ip} | IP\n${isp} | ORG\n${country} - ${city} | REG`,
+        icon: "globe.asia.australia.fill",
+        backgroundColor: '#0C9DFA'
+    };
+
+    $done(body);
 });
-
-function getFlagEmoji(countryCode) {
-      if (countryCode.toUpperCase() == 'TW') {
-    countryCode = 'CN'
-  }
-  const codePoints = countryCode
-    .toUpperCase()
-    .split('')
-    .map(char => 127397 + char.charCodeAt())
-  return String.fromCodePoint(...codePoints)
-
-}
