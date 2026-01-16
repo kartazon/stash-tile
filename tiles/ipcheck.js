@@ -18,7 +18,7 @@ $httpClient.get(url, function(error, response, data) {
     let body = {
         title: "INFO",
         // title: rootName,
-        content: `${ip} |   IP\n${isp} |  ORG\n${emoji} ${country} - ${city} |  REG\n${timezone} |  TMZ`,
+        content: `${ip}  |   IP\n${isp}  |  ORG\n${emoji} ${country} - ${city}  |  REG\n${timezone}  |  TMZ`,
         icon: "globe.asia.australia.fill",
         backgroundColor: '#0C9DFA'
     };
