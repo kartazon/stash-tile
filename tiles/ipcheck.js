@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 let url = "http://ip-api.com/json/?lang=en";
-const align = (text, width = 10) => text.padEnd(width, ' ');
 
 $httpClient.get(url, function(error, response, data) {
     if (error) {
@@ -18,10 +17,8 @@ $httpClient.get(url, function(error, response, data) {
 
     let body = {
         title: "IP info",
-        content: `${align("IP:")}${ip}\n` +
-                 `${align("ORG:")}${isp}\n` +
-                 `${align("REG:")}${emoji} ${country}\n` +
-                 `${align("TMZ:")}${timezone}`,
+        // title: rootName,
+		content: `${ip}\t |\t IP\n${isp}\t |\t ORG\n${emoji} ${country} - ${city}\t |\t REG\n${timezone}\t |\t TMZ`,
         icon: "globe.asia.australia.fill",
         backgroundColor: '#0C9DFA'
     };
@@ -34,4 +31,3 @@ function getFlagEmoji(countryCode) {
     return countryCode
         .toUpperCase()
         .replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt(0)));
-}
